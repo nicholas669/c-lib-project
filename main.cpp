@@ -69,12 +69,10 @@ bool login()
     {
         if (read == pass)
         {
+            if (filename.find(cap(admin)) != string::npos){
+                adm = true;
+            }
             cout << "Welcome" << endl;
-            return true;
-        }
-        else if (read == pass && filename.find(cap(admin)) != string::npos)
-        {
-            adm = true;
             return true;
         }
         else
