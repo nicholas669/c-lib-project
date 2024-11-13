@@ -26,8 +26,6 @@ string cap(string a)
     return a;
 };
 
-
-
 void signup()
 {
     cout << "Enter your username: " << endl;
@@ -86,12 +84,6 @@ bool login()
     }
     return false;
 }
-
-
-
-
-
-
 
 void view(){
     cout << "\033[2J\033[1;1H";
@@ -166,12 +158,12 @@ void tambah(){
     cout << "\033[2J\033[1;1H";
     cout << "Enter the book title: \n";
     string title;
-    cin >> title;
+    cin.ignore();
+    getline(cin, title);
     library.push_back(make_pair(title,1));
     cout << "Book is successfuly added to the library\n";
     cout << "Press Enter to continue...";
-cin.ignore();
-cin.get();
+    cin.get();
 }
 
 void upd(){
@@ -183,12 +175,12 @@ void upd(){
     if(choice > 0 && choice <= library.size()){
         cout << "Enter the new title\n";
         string title;
-        cin >> title;
+        cin.ignore();
+        getline(cin, title);
         library[choice-1].first = title;
-        cout << "Title is updated sucessfuly";
+        cout << "Title is updated sucessfuly\n";
         cout << "Press Enter to continue...";
-cin.ignore();
-cin.get();
+        cin.get();
     }
 }
 
@@ -200,7 +192,7 @@ void ers(){
     cin >> choice;
     if(choice > 0 && choice <= library.size()){
         library.erase(library.begin()+choice-1);
-        cout << "Title is updated sucessfuly";
+        cout << "Title is updated sucessfuly\n";
         cout << "Press Enter to continue...";
 cin.ignore();
 cin.get();
