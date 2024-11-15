@@ -131,26 +131,36 @@ vector<string> time_place = {
 void sent(){
     int count = 0;
     while(count < 5){
-    srand(0);
-    int random = rand() % 50 - count;
+    srand(time(0));
+    int random = rand() % (50 - count);
     string sentence = subject_nouns[random] +" "+ transitive_verbs[random] +" "+ object_nouns[random] +" "+ time_place[random];
     cout << endl << sentence << endl;
     cout << "Enter each word in the sentence above: \n";
     string ans;
     int score = 100;
-    cout << "You have 5 seconds to write the sentence\n";
+    int seconds = 8;
+    cout << "You have 8 seconds to write the sentence\n";
     cout << "Press enter to continue...." << endl;
     cin.ignore();
     // cin.get();
     // sleep(5);
-    this_thread::sleep_for(chrono::seconds(5));
-    getline(cin,ans);
+  
+    
+    
+    auto start_time = chrono::steady_clock::now();
+    getline(cin, ans);
+    auto end_time = chrono::steady_clock::now();
 
-    for(int i = 0;i < sentence.size();i++){
-        if(!(tolower(sentence[i]) == tolower(ans[i]))){
+    if (chrono::duration_cast<chrono::seconds>(end_time - start_time).count() > 8) {
+            cout << "Time's up! \n";
+            score -= 50;
+        } 
+    for (size_t i = 0; i < sentence.size(); i++) {
+        if (tolower(sentence[i]) != tolower(ans[i])) {
             score -= 5;
+            }
         }
-    }
+        
     cout << score;
     subject_nouns.erase(subject_nouns.begin() + random);
     transitive_verbs.erase(transitive_verbs.begin() + random);
