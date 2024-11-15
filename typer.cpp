@@ -130,7 +130,9 @@ vector<string> time_place = {
 
 void sent(){
     int count = 0;
+    int total = 0;
     while(count < 5){
+    cout << "\033[2J\033[1;1H";
     srand(time(0));
     int random = rand() % (50 - count);
     string sentence = subject_nouns[random] +" "+ transitive_verbs[random] +" "+ object_nouns[random] +" "+ time_place[random];
@@ -151,7 +153,7 @@ void sent(){
     getline(cin, ans);
     auto end_time = chrono::steady_clock::now();
 
-    if (chrono::duration_cast<chrono::seconds>(end_time - start_time).count() > 8) {
+    if (chrono::duration_cast<chrono::seconds>(end_time - start_time).count() > 10) {
             cout << "Time's up! \n";
             score -= 50;
         } 
@@ -160,6 +162,7 @@ void sent(){
             score -= 5;
             }
         }
+    total += score;
         
     cout << score;
     subject_nouns.erase(subject_nouns.begin() + random);
@@ -168,6 +171,8 @@ void sent(){
     time_place.erase(time_place.begin() + random);
     count++;
     }
+    cout << total << endl;
+    
 }
 
 int main(){
