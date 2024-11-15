@@ -19,9 +19,7 @@ string cap(string a)
 {
     for (int i = 0; i < a.size(); i++)
     {
-        
         a[i] = tolower(a[i]);
-        
     }
     return a;
 };
@@ -110,8 +108,8 @@ void pinjam(){
     if (library[pinjam_buku-1].second == 0){
         cout << "Book is not available\n";
         cout << "Press Enter to continue...";
-cin.ignore();
-cin.get();
+        cin.ignore();
+        cin.get();
     }
     else{
     library[pinjam_buku-1].second -= 1;
@@ -146,13 +144,12 @@ cin.get();
         pinjaman[name].erase(pinjaman[name].begin() + kembali - 1);
         cout << "Book returned successfully.\n";
         cout << "Press Enter to continue...";
-cin.ignore();
-cin.get();
+        cin.ignore();
+        cin.get();
     } else {
         cout << "Invalid choice.\n";
     }
 }
-
 
 void tambah(){
     cout << "\033[2J\033[1;1H";
@@ -198,13 +195,6 @@ cin.ignore();
 cin.get();
     }
 }
-
-
-
-
-
-
-
 
 void menu() {
     cout << "\033[2J\033[1;1H";
@@ -267,11 +257,6 @@ void menu() {
     }
 }
 
-
-
-
-
-
 int main()
 {
     library.push_back(make_pair("The Great Gatsby", 1));
@@ -280,6 +265,4 @@ int main()
     library.push_back(make_pair("Moby Dick", 1));
     menu();
     return 0;
-    
-
 }

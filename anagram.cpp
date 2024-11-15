@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <algorithm>
 
 using namespace std;
 
@@ -22,8 +23,8 @@ void game(){
         anag[word].push_back(ori);
         name.push_back(word);
     }
-
 }
+
 int main(){
     game();
     for (const auto& pair : anag) {
